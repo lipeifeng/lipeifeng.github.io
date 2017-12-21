@@ -1,0 +1,224 @@
+/*首页通用样式*/
+html,body,header,nav,main,footer,ul,li,h1,h2,h3,h4,h5,h5,img,span,div,p{
+	padding:0;
+	margin:0;
+}
+
+header,nav,main,footer{
+	font-family:"楷体";
+	display: block;
+}
+
+a{
+	text-decoration:none;
+	color:#fff;
+}
+
+ul{
+	list-style:none;
+}
+
+body{
+	background: url(../images/indimgs/footside.jpg) 0 100%;
+	background-size:cover;
+	position: relative;
+}
+
+/*固定栏开始*/
+
+/*头部固定栏（鸡汤）*/
+#heart{
+	width:100%;
+	height:50px;
+	background-color: rgba(255, 255, 255, 0.58);
+	/*background:url(../images/indimgs/topbg.jpg) 0 0 repeat-x;*/
+	box-shadow:0px 2px 2px #333 ;
+	position:fixed;
+	left:0px;
+	top:0px;
+	z-index:999;
+	
+	text-align:center;
+	color:transparent;
+	font-size:40px;
+	font-family: "楷体";
+	line-height:50px;
+	-webkit-text-stroke: 1.3px orange;
+}
+/*侧边栏(时间)*/
+#time{
+	position:absolute;
+	top:70px;
+	right:40px;
+	z-index:11;
+}
+
+
+
+/*固定栏结束*/
+
+/*首页头部样式开始*/
+header{
+	width:100%;
+	height:28px;
+	background:url(../images/indimgs/topbg.jpg) 0 0 repeat;
+}
+
+/*首页头部样式结束*/
+
+/*首页导航栏样式开始*/
+nav{
+	width:100%;
+	height:200px;
+	background:url(../images/indimgs/bg.jpg) 0px 0px repeat;
+	position:relative;
+}
+.nav-con{
+	width:1000px;
+	height:64px;
+	margin:0px auto;
+	margin-top:60px;
+	background: url(../images/indimgs/navbg.png) 0 0 no-repeat;
+	color:#fff;
+	font-size:22px;
+	overflow:hidden;
+	padding-left:30px;
+}
+.nav-con ul>li{
+	list-style:none;
+	float:left;
+	padding:20px 24px;
+	
+}
+.nav-search{
+	display: inline-block;
+	font-size:22px;
+	position: absolute;
+	right:290px;
+	top:28px;
+}
+.nav-search input{
+	background:#e5e5e5;
+	border:1px solid #ccc;
+	vertical-align: top;
+	width:164px;
+	border-radius:5px;
+	height:26px;
+}
+.nav-search label{
+	display: inline-block;
+	width:50px;
+	height:28px;
+	vertical-align: middle;
+	background:#333333;
+	color:#E5E5E5;
+	border-radius:5px;
+	text-align:center;
+	line-height: 28px;
+}
+
+/*首页导航栏样式结束*/
+
+/*首页main主体样式开始*/
+main{
+	position:relative;
+	width:100%;
+	min-height:200px;
+	margin-top:-90px;
+}
+.main-topline{
+	width:1034px;
+	height:14px;
+	background: url(../images/indimgs/maintopbg.jpg) 0 0 no-repeat;
+	margin:0 auto;
+}
+/*主体内容样式*/
+.main-content{
+	width:1000px;
+	margin:0 auto;
+	min-height:158px;
+	background-color:#e5e5e5;
+	border-left:1px solid #d2d2d2 ;
+	border-right:1px solid #d2d2d2 ;
+	overflow:hidden;
+}
+
+.main-content-article{
+	width:100%;
+	box-sizing:border-box;
+	padding:10px;
+	padding-bottom:0px;
+	position:relative;
+}
+.main-content-article2{
+	margin:10px;
+}
+.main-content-article3{
+	display:inline-block;
+	position:absolute;
+	top:86px;
+}
+.main-content-article4{
+	display:inline-block;
+	width:120px;
+	height:21px;
+	padding:0 20px;
+	position:absolute;
+	top:158px;
+	left:180px;
+	background:#f6f6f6;
+	vertical-align: middle;
+}
+.main-content-article4:before{
+	content:'';
+	display:inline-block;
+	width:16px;
+	height:17px;
+	margin-right:5px;
+	background:url(../images/indimgs/time.jpg) 0 4px no-repeat;
+}
+
+.main-content-article5{
+	display:inline-block;
+	position:absolute;
+	top:160px;
+	right:24px;
+	background:#333;
+	color:white;
+	padding:5px 10px;
+	cursor:pointer;
+}
+
+.main-content h3{
+	width:411px;
+	height:44px;
+	text-align:center;
+	color:gold;
+	background: url(../images/indimgs/rtitbg.png) 0 0px no-repeat;
+	background-size: cover;
+	line-height:58px;
+}
+
+
+.main-bottomline{
+	width:1034px;
+	height:14px;
+	background:url(../images/indimgs/mainendbg.jpg);
+	margin:0 auto;
+}
+/*首页main主体样式结束*/
+
+/*首页footer尾部样式开始*/
+footer{
+	width:100%;
+	background:url(../images/indimgs/footerbg.png);
+	text-align:center;
+	color:#ccc;
+	position:relative;
+	bottom:0;
+	margin-top:50px;
+}
+footer p{
+	padding:20px 0;
+}
+/*首页footer尾部样式结束*/
