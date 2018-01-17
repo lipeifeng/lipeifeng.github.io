@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+	<style type="text/css">
+		body, html,#allmap {width: 100%;height: 500px;overflow: hidden;margin:0;font-family:"微软雅黑";}	
+		.optionpanel{margin: 10px;}
+		#r-result{position:absolute;top:1px;right:130px;background:#ccc;border-radius:10px;color:blue;}
+		#r-result p{margin:5px 0 0 10px;}
+		
+		#returns{
+			width:100px;
+			height:40px;
+			background:#ccc;
+			border-radius:10px;
+			position:fixed;
+			left:55%;
+			top:0px;
+			font-size:20px;
+			line-height:33px;
+			text-align:center;
+			box-sizing:border-box;
+			border:3px double #fff;
+			color:black;
+			text-decoration:none;
+			z-index:99;
+			opacity:0.5;
+		}
+		#returns:hover{
+			box-sizing:border-box;
+			border:3px double orangered;
+			color:orangered;
+			opacity:1;
+		}
+	</style>
+	</style>
+	<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=yFzMya5ciZ863KCXRycEaPcNIde6YsQY"></script>
+	<script src="http://libs.baidu.com/jquery/1.9.0/jquery.js"></script>
+	<script type="text/javascript" src="http://lbsyun.baidu.com/custom/stylelist.js"></script>
+	<title>xdl地图</title>
+</head>
+<body>
+	<a id="returns" href="javascript:window.history.go(-1)">返回</a>
+	<div id="allmap"></div>
+	<div id="r-result">
+		<div class="optionpanel">
+			<label>选择主题</label>
+			<select id="stylelist" onchange="changeMapStyle(this.value)"></select>
+		</div>		
+	</div> 
+</body>
+</html>
+<script type="text/javascript">
+	// 百度地图API功能
+	var map = new BMap.Map("allmap");    // 创建Map实例
+	
+	map.centerAndZoom(new BMap.Point(113.409192,23.119789), 14);  // 初始化地图,设置中心点坐标和地图级别
+
+	//添加地图类型控件
+	map.addControl(new BMap.MapTypeControl({
+		mapTypes:[
+            BMAP_NORMAL_MAP,
+            BMAP_HYBRID_MAP
+        ]}));	  
+	map.setCurrentCity("广州");          // 设置地图显示的城市 此项是必须设置的
+	
+         
+	//单击获取点击的经纬度
+//	map.addEventListener("click",function(e){
+//		alert(e.point.lng + "," + e.point.lat);
+//	});
+	
+	//获取线路
+	var myP1 = new BMap.Point(113.409623,23.120188);    //起点
+	var myP2 = new BMap.Point(113.331062,23.155823);    //终点
+	var myIcon = new BMap.Icon("http://lbsyun.baidu.com/jsdemo/img/Mario.png", new BMap.Size(32, 70), {    //小车图片
+		//offset: new BMap.Size(0, -5),    //相当于CSS精灵
+		imageOffset: new BMap.Size(0, 0)    //图片的偏移量。为了是图片底部中心对准坐标点。
+	  });
+	var driving2 = new BMap.DrivingRoute(map, {renderOptions:{map: map, autoViewport: true}});    //驾车实例
+	driving2.search(myP1, myP2);    //显示一条公交线路
+
+	window.run = function (){
+		var driving = new BMap.DrivingRoute(map);    //驾车实例
+		driving.search(myP1, myP2);
+		driving.setSearchCompleteCallback(function(){
+			var pts = driving.getResults().getPlan(0).getRoute(0).getPath();    //通过驾车实例，获得一系列点的数组
+			var paths = pts.length;    //获得有几个点
+
+			var carMk = new BMap.Marker(pts[0],{icon:myIcon});
+			map.addOverlay(carMk);
+			i=0;
+			function resetMkPoint(i){
+				carMk.setPosition(pts[i]);
+				if(i < paths){
+					setTimeout(function(){
+						i++;
+						resetMkPoint(i);
+					},300);
+				}
+			}
+			setTimeout(function(){
+				resetMkPoint(5);
+			},300)
+
+		});
+	}
+
+	setTimeout(function(){
+		run();
+	},1500);
+	
+	
+
+
+	var sy = new BMap.Symbol(BMap_Symbol_SHAPE_BACKWARD_OPEN_ARROW, {
+	    scale: 0.6,//图标缩放大小
+	    strokeColor:'#fff',//设置矢量图标的线填充颜色
+	    strokeWeight: '2',//设置线宽
+	});
+	var icons = new BMap.IconSequence(sy, '10', '30');
+	// 创建polyline对象
+	var pois = [
+		new BMap.Point(113.409623,23.120188),
+		new BMap.Point(113.331062,23.155823)
+	];
+	var polyline =new BMap.Polyline(pois, {
+	   enableEditing: false,//是否启用线编辑，默认为false
+	   enableClicking: true,//是否响应点击事件，默认为true
+	   icons:[icons],
+	   strokeWeight:'8',//折线的宽度，以像素为单位
+	   strokeOpacity: 0.8,//折线的透明度，取值范围0 - 1
+	   strokeColor:"#18a45b" //折线颜色
+	});
+	
+	map.addOverlay(polyline); //增加折线
+	
+
+	//创建小狐狸
+	var pt = new BMap.Point(113.409623,23.120188);
+	var myIcon1 = new BMap.Icon("http://lbsyun.baidu.com/jsdemo/img/fox.gif", new BMap.Size(300,157));
+	var marker2 = new BMap.Marker(pt,{icon:myIcon1});  // 创建标注
+	map.addOverlay(marker2);              // 将标注添加到地图中
+	
+
+	var point = new BMap.Point(113.409623,23.120188);
+	map.centerAndZoom(point, 12);
+	var marker = new BMap.Marker(point);  // 创建标注
+	map.addOverlay(marker);              // 将标注添加到地图中
+
+	var label = new BMap.Label("兄弟连广州校区",{offset:new BMap.Size(20,-10)});
+	marker.setLabel(label);
+	
+	//初始化模板选择的下拉框
+	var sel = document.getElementById('stylelist');
+	for(var key in mapstyles){
+		var style = mapstyles[key];
+		var item = new  Option(style.title,key);
+		sel.options.add(item);
+	}
+	window.map = map;
+
+	map.addControl(new BMap.NavigationControl());               // 添加平移缩放控件
+	map.addControl(new BMap.ScaleControl());                    // 添加比例尺控件
+	map.addControl(new BMap.OverviewMapControl());              //添加缩略地图控件
+	map.enableScrollWheelZoom();                            //启用滚轮放大缩小
+	map.addControl(new BMap.MapTypeControl());          //添加地图类型控件
+	map.disable3DBuilding();
+//	map.centerAndZoom(point, 14); 
+
+	//代码使用如下,即可. 模板页可以查看http://lbsyun.baidu.com/custom/list.htm      
+	//map.setMapStyle({style:'midnight'});
+
+	changeMapStyle('normal')
+	sel.value = 'normal';
+
+	function changeMapStyle(style){
+		map.setMapStyle({style:style});
+		$('#desc').html(mapstyles[style].desc);
+	}
+
+	
+//	var pointA = new BMap.Point(106.486654,29.490295);  // 创建点坐标A--大渡口区
+//	var pointB = new BMap.Point(106.581515,29.615467);  // 创建点坐标B--江北区
+//	alert('从大渡口区到江北区的距离是：'+(map.getDistance(pointA,pointB)).toFixed(2)+' 米。');  //获取两点距离,保留小数点后两位
+//	var polyline = new BMap.Polyline([pointA,pointB], {strokeColor:"blue", strokeWeight:6, strokeOpacity:0.5});  //定义折线
+//	map.addOverlay(polyline);     //添加折线到地图上
+	
+	
+	
+	map.enableScrollWheelZoom(true);     //开启鼠标滚轮缩放
+	
+</script>

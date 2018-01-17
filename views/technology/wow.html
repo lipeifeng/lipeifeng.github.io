@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+	<link rel="stylesheet" href="../../ccs/article_technology.css" />
+	
+	<title>wow.js插件的使用</title>
+	
+</head>
+<body>
+	<!--面包屑导航开始-->
+	<div id="navs">
+		<p>
+			<span>你当前的位置：</span>
+			<a href="#">首页</a> / 
+			<a href="#">技术文章</a> / 
+			<a href="#">WOW.js - 让页面滚动更有趣</a>
+		</p>
+	</div>
+	<!--面包屑导航结束-->
+	
+	<!--文章区域开始-->
+	<div id="article">
+		
+		<!--文章标题-->
+		<div class="article-title">
+			<h3 style="width:300px">WOW.js一次性动画插件</h3>
+		</div>
+		
+		<!--文章内容-->
+		<div class="article-con">
+		
+			<!--文章内容部分-->
+			<div class="article-con">
+		
+				<!--文章内容部分内容-->
+				<div class="article-con-content">
+					<ol style="list-style:none">
+						<li>
+							<h4 style="display:inline-block">一.wow介绍</h4>
+							<ul>
+								<li>
+									WOW.js 依赖 animate.css，它支持 animate.css 多达 60 多种的动画效果，能满足您的各种需求。
+								</li>
+								<li>
+									浏览器兼容：<br />
+									IE6、IE7 等老旧浏览器不支持 CSS3 动画，所以没有效果；<br />
+									而 wow.js 也使用了 querySelectorAll 方法，IE 低版本会报错。<br />
+									为了达到更好的兼容，最好加一个浏览器及版本判断。<br />
+<xmp>if (!(/msie [6|7|8|9]/i.test(navigator.userAgent))){
+	new WOW().init();
+  };</xmp>
+								</li>
+							</ul>
+						</li>
+						<li>
+							<h4 style="display:inline-block">二.wow使用方法</h4>
+							<ul>
+								<li>
+									1、引入文件
+									<xmp>
+<link rel="stylesheet" href="css/animate.min.css">  /*放置body之前*/
+<script src="js/wow.min.js"></script> /*放置body之后*/
+									</xmp>
+								</li>
+								<li>
+									2.HTML代码
+									<xmp>
+<div class="wow slideInLeft"></div>  /*动画的元素必须设置为块状或者行内块状*/
+<div class="wow slideInRight"></div>
+									</xmp>
+									四个可选属性：<br />
+									data-wow-duration(动画持续时间，单位s)<br />
+									data-wow-delay(动画延迟时间，单位s)<br />
+									data-wow-offset(偏移量，无单位，代表距离可视区域多远开始执行动画)<br />
+									data-wow-iteration="10"(动画重复次数)<br />
+									如：
+									<xmp><div class="wow slideInLeft" data-wow-duration="2s" data-wow-delay="5s" 
+data-wow-offset="10"  data-wow-iteration="10"></div></xmp>
+									类名前面的wow是每一个带动画的元素都要加的，slideInLeft就是说明动画样式。<br />
+									后面的data-wow-duration、data-wow-delay、data-wow-offset和data-wow-iteration这四个属性可选可不选。<br />
+									***其中data-wow-offset="数值"中的数值是动画完成后元素距离显示器底部的位置，而不是距离浏览器窗口底部的位置。
+								</li>
+								<li>
+									3.JavaScript
+									<xmp>new WOW().init();</xmp>
+									如果需要自定义配置，可如下使用：<br />
+<xmp>var wow = new WOW({
+    boxClass: 'wow',
+    animateClass: 'animated',
+    offset: 0,
+    mobile: true,
+    live: true
+});
+wow.init();</xmp>
+<pre>
+自定义配置说明：
+属性/方法	      类型	 默认值	         说明
+boxClass	     字符串	‘wow’	         需要执行动画的元素的 class
+animateClass         字符串     ‘animated’	 animation.css 动画的 class
+offset	             整数    	0	         距离可视区域多少开始执行动画
+mobile	             布尔值	true	         是否在移动设备上执行动画
+live	             布尔值	true	         异步加载的内容是否有效
+</pre>									
+								</li>
+								<li>
+									4.各种class类名的动画效果：<a href="wow_examples.html" target="_blank">点击可查看不同类效果</a>
+<pre style="position:relative;left:-34px;font-size:16px;">
+<span style="color:red">wow rollIn</span>从左到右、顺时针滚动、透明度从100%变化至设定值 	 
+<span style="color:red">wow bounceIn</span>从原位置出现，由小变大超出设定值，再变小小于设定值，再回归设定值、透明度从100%变化至设定值
+<span style="color:red">wow bounceInUp</span>从下往上、窜上来以后会向上超出一部分然后弹回去、透明度为设定值不变
+<span style="color:red">wow bounceInDown</span>从上往下、掉下来以后会向下超出一部分然后弹跳一下、透明度为设定值不变
+<span style="color:red">wow bounceInLeft</span>从左往右、移过来以后会向右超出一部分然后往左弹一下、透明度为设定值不变
+<span style="color:red">wow bounceInRight</span>从右往左、移过来以后会向左超出一部分然后往右弹一下、透明度为设定值不变	 
+<span style="color:red">wow slideInUp</span>从下往上、上来后固定到设定位置、透明度为设定值不变（up是从下往上）
+<span style="color:red">wow slideInDown</span>从上往下、上来后固定到设定位置、透明度为设定值不变
+<span style="color:red">wow slideInLeft</span>从左往右、上来后固定到设定位置、透明度为设定值不变（left却是从左往右）
+<span style="color:red">wow slideInRight</span>从右往左、上来后固定到设定位置、透明度为设定值不变	 
+<span style="color:red">wow lightSpeedIn</span>从右往左、头部先向右倾斜，又向左倾斜，最后变为原来的形状、透明度从100%变化至设定值
+<span style="color:red">wow pulse</span>原位置放大一点点在缩小至原本大小、透明度为设定值不变（配合动画执行次数属性效果更佳）
+<span style="color:red">wow flipInX</span>原位置后仰前栽、透明度从100%变化至设定值
+<span style="color:red">wow flipInY</span>原位置左右旋动、透明度从100%变化至设定值
+<span style="color:red">wow bounce</span>上下抖动、透明度为设定值不变（配合动画执行次数和动画持续时间属性可以实现剧烈抖动亦或是慢慢抖）
+<span style="color:red">wow shake</span>左右抖动、透明度为设定值不变（配合动画执行次数和动画持续时间属性可以实现剧烈抖动亦或是慢慢抖）
+<span style="color:red">wow swing</span>从右往左、头部先向右倾斜，又向左倾斜，最后变为原来的形状、透明度为设定值不变
+<span style="color:red">wow bounceInU</span>原位置不变、直接从不显示到显示（无过过渡效果）
+<span style="color:red">wow wobble</span>原位置不变、类似于一个人站在那左右晃头、透明度为设定值不变
+</pre>
+								</li>
+							</ul>
+						</li>
+						
+					
+				</div>
+			</div>
+			
+			
+			
+		</div>
+		
+		<div class="article-Theend">
+			
+			<p class="article-end">
+				<span>------->>本·文·完</span>
+			</p>
+			
+		</div>
+		
+	</div>
+	<!--文章区域结束-->
+	
+</body>
+<script>
+
+</script>
+</html>

@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>JackieLee个人技术博客</title>
+	<meta charset="utf-8"/>
+	<link rel="stylesheet" href="ccs/animate.css" />
+	<link rel="stylesheet" href="ccs/indcss.css" />
+	<script src="js/jquery.js"></script>
+	<script src="js/vue.js"></script>
+</head>
+<body>
+	<!--
+    	固定栏开始
+    -->
+    
+    <!--
+    	顶部固定栏（鸡汤）
+    -->
+    <!--<div id="heart" class="wow bounceInLeft">
+    	<p>人生若只如初见，何必秋风悲画扇</p>
+    </div>-->
+    
+     <!--
+    	右侧边固定栏（联系我）
+    -->
+    <!--<div id="contact">
+    	
+    </div>-->
+    
+     <!--
+    	右侧边固定栏（时间）
+    -->
+    <div id="time">
+    	<script type="text/javascript" src="js/clock.js"></script>
+    </div>
+    
+    <!--
+    	canvas背景
+    --> 
+     <script type="text/javascript" src="js/canvas-nest.js"></script>
+     
+	<!--
+    	固定栏结束
+    -->
+	
+	
+	<!--
+    	首页头部开始
+    -->
+	<header>
+		
+	</header>
+	
+	<!--
+    	首页头部结束
+    -->
+    
+    <!--
+    	首页导航栏开始
+    -->
+	<nav>
+		<div class="nav-con wow bounceInLeft"  data-wow-delay="1s">
+			<ul>
+				<li><a href="index.html">网站首页</a></li>
+				<li><a href="#">技术文章</a></li>
+				<li><a href="#">我的日记</a></li>
+				<li><a href="#">关于我</a></li>
+				<li><a href="#">给我留言</a></li>
+			</ul>		
+		</div>
+		<div class="nav-search  wow bounceInRight"  data-wow-delay="1s">
+			
+			<input type="text" name="search" id="search" autocomplete="on"/>
+			<label for="search" style="cursor:pointer" id="searchlabel">
+				搜索
+			</label>
+			
+		</div>
+	</nav>
+	<!--
+    	首页导航栏结束
+    -->
+	
+	<!--
+    	首页主体开始
+    -->
+	<main>
+		<div class="main-topline wow bounceInDown" data-wow-delay="1.6s"></div>
+		
+		<div class="main-content wow lightSpeedIn"  data-wow-delay="2.4s"  data-wow-duration="2s">
+			<ul>
+				<li class="main-content-article" data-scroll-reveal="enter left over 1s and move 100px wait 1.5s">
+					
+					<iframe id="frame_content" frameborder="0" width="100%"  allowTransparency="true" scrolling="no"></iframe>
+					
+				</li>
+			
+				
+			</ul>
+		</div>
+		
+		<div class="main-bottomline wow swing"></div>
+	</main>
+	<!--
+    	首页主体结束
+    -->
+    
+    <!--
+    	首页尾部开始
+    -->
+	<footer>
+		<p>All Rights Reserved 版权所有：<span style="color: black;">李培锋个人博客</span></p>
+	</footer>
+	<!--
+    	首页尾部结束
+    -->
+</body>
+<script src="js/indjs.js"></script>
+
+
+<!--<script src="js/wow.js"></script>
+	
+<script src="js/scrollReveal.js"></script> 
+
+<script>
+if (!(/msie [6|7|8|9]/i.test(navigator.userAgent))){
+	
+
+	(function(){
+		window.scrollReveal = new scrollReveal({reset: true});
+	})();
+	
+	new WOW().init();
+	
+	
+};
+</script>-->
+
+
+<script>
+//iframe自适应高度
+function reinitIframe(){
+var iframe = document.getElementById("frame_content");
+try{
+var bHeight = iframe.contentWindow.document.body.scrollHeight;
+var dHeight = iframe.contentWindow.document.documentElement.scrollHeight;
+var height = Math.max(bHeight, dHeight);
+iframe.height = height;
+}catch (ex){}
+}
+window.setInterval("reinitIframe()", 200);	
+
+</script>
+
+<Script language="javascript">   
+//解析URL中a标签传递的参数,从而把参数转换出来赋予iframe的src值
+	function GetRequest() {   
+	   var url = location.search; //获取url中"?"符后的字串   
+	   var theRequest = new Object();   
+	   if (url.indexOf("?") != -1) {   
+	      var str = url.substr(1);   
+	      strs = str.split("&");   
+	      for(var i = 0; i < strs.length; i ++) {   
+	         theRequest[strs[i].split("=")[0]]=strs[i].split("=")[1];   
+	      }   
+	   }   
+	   return theRequest;   
+	}   
+	
+	console.log(GetRequest());
+	
+	var iframeName=document.getElementById('frame_content');
+//	
+	iframeName.setAttribute('src','./views/'+GetRequest().path+'/'+GetRequest().name+'.html')
+	
+</script> 
+
+</html>

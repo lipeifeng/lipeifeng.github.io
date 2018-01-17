@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<title>scrollReveal.js演示</title>
+<meta charset="utf-8">
+<style>
+* { margin: 0; padding: 0;}
+.aseoe { font-family: "Microsoft Yahei";}
+.aseoe h1 { margin: 20px 0 30px; font-size: 60px; font-weight: 500; text-align: center;}
+.aseoe-explain { margin-bottom: 20px; font-size: 14px; text-align: center;}
+.aseoe .list { width: 1064px; margin: 0 auto; overflow: hidden; zoom: 1;}
+.aseoe .list ul { float: left; width: 246px; margin: 0 10px; list-style-type: none;}
+.aseoe .list li { margin-bottom: 20px;}
+.aseoe .list img { width: 100%; border-radius: 5px; vertical-align: top;}
+
+#returns{
+	width:100px;
+	height:40px;
+	background:#ccc;
+	border-radius:10px;
+	position:fixed;
+	left:10px;
+	top:10px;
+	font-size:20px;
+	line-height:33px;
+	text-align:center;
+	box-sizing:border-box;
+	border:3px double #fff;
+	color:black;
+	text-decoration:none;
+}
+#returns:hover{
+	box-sizing:border-box;
+	border:3px double orangered;
+	color:orangered;
+}
+</style>
+</head>
+
+<body class="aseoe">
+	
+<a id="returns" href="../../article.html?name=scrollReveal&path=technology">返回</a>
+
+<h1>scrollReveal.js演示</h1>
+
+<p class="aseoe-explain">页面滚动显示动画效果，IE10 以下无效</p>
+
+<div class="list"> 
+	<ul>
+		<li data-scroll-reveal="enter top"><img src="../../images/scrollimgs/1.jpg" alt=""></li>
+		<li data-scroll-reveal="enter right after 0.5s"><img src="../../images/scrollimgs/2.jpg" alt=""></li>
+		<li data-scroll-reveal="enter bottom over 1s and move 300px after 0.3s"><img src="../../images/scrollimgs/3.jpg" alt=""></li>
+		<li data-scroll-reveal="enter top over 0.5s and move 200px"><img src="../../images/scrollimgs/4.jpg" alt=""></li>
+		<li data-scroll-reveal="enter bottom over 1s and move 100px"><img src="../../images/scrollimgs/5.jpg" alt=""></li>
+		<li data-scroll-reveal="enter bottom over 1s and move 300px after 0.3s"><img src="../../images/scrollimgs/6.jpg" alt=""></li>
+		<li data-scroll-reveal="enter top over 3s after 0.5s"><img src="../../images/scrollimgs/7.jpg" alt=""></li>
+		<li data-scroll-reveal="enter left"><img src="../../images/scrollimgs/8.jpg" alt=""></li>
+	</ul>
+	<ul>	
+		<li data-scroll-reveal="enter top"><img src="../../images/scrollimgs/9.jpg" alt=""></li>
+		<li data-scroll-reveal="enter left"><img src="../../images/scrollimgs/10.jpg" alt=""></li>
+		<li data-scroll-reveal="enter top"><img src="../../images/scrollimgs/11.jpg" alt=""></li>
+		<li data-scroll-reveal="enter top over 3s after 0.5s"><img src="../../images/scrollimgs/12.jpg" alt=""></li>
+		<li data-scroll-reveal="enter bottom over 1s and move 100px"><img src="../../images/scrollimgs/13.jpg" alt=""></li>
+		<li data-scroll-reveal="enter top over 0.5s and move 200px"><img src="../../images/scrollimgs/14.jpg" alt=""></li>
+		<li data-scroll-reveal="enter top over 3s after 0.5s"><img src="../../images/scrollimgs/15.jpg" alt=""></li>
+		<li data-scroll-reveal="enter right after 0.5s"><img src="../../images/scrollimgs/16.jpg" alt=""></li>
+	</ul>
+	<ul>
+		<li data-scroll-reveal="enter top over 3s after 0.5s"><img src="../../images/scrollimgs/17.jpg" alt=""></li>
+		<li data-scroll-reveal="enter left"><img src="../../images/scrollimgs/18.jpg" alt=""></li>
+		<li data-scroll-reveal="enter right after 0.5s"><img src="../../images/scrollimgs/19.jpg" alt=""></li>
+		<li data-scroll-reveal="enter top"><img src="../../images/scrollimgs/20.jpg" alt=""></li>
+		<li data-scroll-reveal="enter bottom over 1s and move 100px"><img src="../../images/scrollimgs/21.jpg" alt=""></li>
+		<li data-scroll-reveal="enter top over 0.5s and move 200px"><img src="../../images/scrollimgs/22.jpg" alt=""></li>
+		<li data-scroll-reveal="enter bottom over 1s and move 300px after 0.3s"><img src="../../images/scrollimgs/23.jpg" alt=""></li>
+		<li data-scroll-reveal="enter right after 0.5s"><img src="../../images/scrollimgs/24.jpg" alt=""></li>
+	</ul>
+	<ul>
+		<li data-scroll-reveal="enter left"><img src="../../images/scrollimgs/25.jpg" alt=""></li>
+		<li data-scroll-reveal="enter top over 3s after 0.5s"><img src="../../images/scrollimgs/26.jpg" alt=""></li>
+		<li data-scroll-reveal="enter bottom over 1s and move 100px"><img src="../../images/scrollimgs/27.jpg" alt=""></li>
+		<li data-scroll-reveal="enter top over 0.5s and move 200px"><img src="../../images/scrollimgs/28.jpg" alt=""></li>
+		<li data-scroll-reveal="enter top over 3s after 0.5s"><img src="../../images/scrollimgs/29.jpg" alt=""></li>
+		<li data-scroll-reveal="enter left"><img src="../../images/scrollimgs/30.jpg" alt=""></li>
+		<li data-scroll-reveal="enter top over 3s after 0.5s"><img src="../../images/scrollimgs/31.jpg" alt=""></li>
+		<li data-scroll-reveal="enter bottom over 1s and move 100px"><img src="../../images/scrollimgs/32.jpg" alt=""></li>
+	</ul>
+</div>
+
+<script src="../../js/scrollReveal.js"></script> 
+<script>
+if (!(/msie [6|7|8|9]/i.test(navigator.userAgent))){
+		(function(){
+		window.scrollReveal = new scrollReveal({reset: true});
+	})();
+};
+</script>
+
+</body>
+</html>

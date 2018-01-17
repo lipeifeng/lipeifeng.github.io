@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+	<link rel="stylesheet" href="../../ccs/article_technology.css" />
+	<title>JS&JQ操作AJAX</title>
+</head>
+
+	<!--面包屑导航开始-->
+	<div id="navs">
+		<p>
+			<span>你当前的位置：</span>
+			<a href="#">首页</a> / 
+			<a href="#">技术文章</a> / 
+			<a href="#">JS&JQ操作AJAX</a>
+		</p>
+	</div>
+	<!--面包屑导航结束-->
+	
+	<!--文章区域开始-->
+	<div id="article">
+		
+		<!--文章标题-->
+		<div class="article-title">
+			<h3>JS&JQ操作AJAX</h3>
+		</div>
+		
+		<!--文章内容-->
+		<div class="article-con">
+		
+			<!--文章内容部分-->
+			<div class="article-con">
+		
+				<!--文章内容部分内容-->
+				<div class="article-con-content">
+					<ol style="list-style:none">
+						<li>
+							<img src="../../images/viewimgs/ajax/ajax流程图.png" alt="" />
+						</li>
+						<li>
+							<h4 style="display:inline-block">一、JS操作ajax：</h4>
+						
+							<ul>
+								<li>
+									(1)post方式：
+<xmp style="font-size:22px">
+var send = document.getElementById('send');
+send.onclick=function() {	    
+//请求的5个阶段，对应readyState的值:
+        //0: 未初始化，send方法未调用；
+        //1: 正在发送请求，send方法已调用；
+        //2: 请求发送完毕，send方法执行完毕；
+        //3: 正在解析响应内容；
+        //4: 响应内容解析完毕；
+    var data = 'name=yang';
+    var xhr = new XMLHttpRequest();        //创建一个ajax对象
+    xhr.onreadystatechange = function(event){    //对ajax对象进行监听
+        if(xhr.readyState == 4){    //4表示解析完毕
+            if(xhr.status == 200){    //200为正常返回
+                console.log(xhr.responseText)
+            }
+        }
+    };
+xhr.open('POST','test.php',true);    
+//建立连接，参数一：发送方式，二：请求地址，三：是否异步，true为异步
+xhr.setRequestHeader('Content-type','application/x-www-form-urlencoded'); 
+//POST数据传送需要向请求添加HTTP头   
+    xhr.send(data);   //发送
+};	
+</xmp>
+							<p>
+								send方法:
+								send(string) 将请求发送到服务器。
+								string：仅用于POST请求。
+							</p>
+							<span>**后台接收数据：</span>
+<xmp>
+<?php
+	$user=$_POST;
+	echo JSON_encode($user);
+?>
+</xmp>
+								</li>
+								<li>
+									(2)get方式：
+<xmp>
+var send = document.getElementById('send');
+send.onclick=function() {			
+	var data = 'name=yang&sex=man';
+	var xhr = new XMLHttpRequest(); 
+	xhr.onreadystatechange = function(event) { 
+		if(xhr.readyState == 4) { 
+			if(xhr.status == 200) { 
+				console.log(xhr.responseText)
+			}
+		}
+	};
+	xhr.open('POST', 'test.php?'+data, true);
+	xhr.send(null); 
+};
+
+<?php
+	$user=$_GET;
+	echo JSON_encode($user);
+?>
+</xmp>
+								</li>
+							</ul>
+							
+						</li>
+						
+						<li>
+							<h4 style="display:inline-block">二、JQ操作ajax：</h4>
+<xmp>
+$.ajax({
+    url:'/test1.php',
+    type:'POST', //GET
+    async:true,    //或false,是否异步
+    data:{
+        name:'yang',
+        age:25
+    },
+    timeout:5000,    //超时时间
+    dataType:'json',    //返回的数据格式：json/xml/html/script/jsonp/text
+    beforeSend:function(xhr){
+        console.log(xhr)
+        console.log('发送前')
+    },
+    success:function(data,textStatus,jqXHR){
+        console.log(data)
+        console.log(textStatus)
+        console.log(jqXHR)
+    },
+    error:function(xhr,textStatus){
+        console.log('错误')
+        console.log(xhr)
+        console.log(textStatus)
+    },
+    complete:function(){
+        console.log('结束')
+    }
+})	
+</xmp>
+							
+						</li>
+					
+						<li>
+							<h4 style="display:inline-block">三、Ajax传送和接收数据json格式的转换:</h4>
+							<ul>
+								<li>
+									(1).form数据的序列化：
+<xmp>
+$('#submit').click(function(){
+	$('#form').serialize();        
+	//会根据input里面的name，把数据序列化成字符串；eg：name=yang
+	$('#form').serializeArray();    
+	//会根据input里面的name，把数据序列化成数组；eg：[object]
+	//*注意：没有name会获取不到值
+});	
+</xmp>
+								</li>
+								<li>
+									(2)JS中的数据格式转换方法：
+									<ul>
+										<li>
+											2-1.JSON.parse()【从一个字符串中解析出json对象】<br />
+											//定义一个字符串 var data='{"name":"goatling"}'<br />
+											//解析成对象 JSON.parse(data)<br />
+											结果是：{name: "goatling"}
+										</li>
+										<li>
+											2-2.JSON.stringify()【从一个对象中解析出字符串】<br />
+											//定义一个对象 var data={name:'goatling'}<br />
+											/解析成字符串 JSON.stringify(data)<br />
+											结果是：'{"name":"goatling"}'
+										</li>
+									</ul>
+								</li>
+								<li>
+									(3)PHP中的数据格式转换方法：
+									<p>JSON_encode() 该函数主要用来将数组和对象，转换为 字符串型json格式 。</p>
+									<p>
+***当我们从后台php拿数据时，<br />																	
+（1）先在后台用JSON_encode()把数据转换成字符串型json格式，若直接运用则无需成转换其他。<br />
+（2）若是要后台返回数据的某一条，则先在后台用JSON_encode()把数据转换成字符串型json格式，<br />
+再在前台js脚本中用JSON.parse把数据转换成真正的json对象，从而可以用 . 获取对象中属性，<br />
+最后再把用JSON.stringify把数据转换成字符串数据。
+										
+									</p>
+								</li>
+							</ul>
+						</li>
+					
+					</ol>
+
+				</div>
+			</div>
+			
+			
+			
+		</div>
+		
+		<div class="article-Theend">
+			
+			<p class="article-end">
+				<span>------->>本·文·完</span>
+			</p>
+			
+		</div>
+		
+	</div>
+	<!--文章区域结束-->
+	
+</body>
+</html>

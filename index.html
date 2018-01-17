@@ -6,6 +6,7 @@
 	<link rel="stylesheet" href="ccs/animate.css" />
 	<link rel="stylesheet" href="ccs/indcss.css" />
 	<script src="js/jquery.js"></script>
+	<script src="js/vue.js"></script>
 </head>
 <body>
 	<!--
@@ -16,7 +17,8 @@
     	顶部固定栏（鸡汤）
     -->
     <div id="heart" class="wow bounceInLeft">
-    	<p>人生若只如初见，何必秋风悲画扇</p>
+    	<!--<p>人生若只如初见，何必秋风悲画扇</p>-->
+    	<p>经不住流年似水，逃不过此间年少</p>
     </div>
     
      <!--
@@ -29,11 +31,15 @@
      <!--
     	右侧边固定栏（时间）
     -->
-    <button id="time">
+    <div id="time">
     	<script type="text/javascript" src="js/clock.js"></script>
-    </button>
+    </div>
     
-    
+    <!--
+    	canvas背景
+    --> 
+     <script type="text/javascript" src="js/canvas-nest.js"></script>
+     
 	<!--
     	固定栏结束
     -->
@@ -56,11 +62,11 @@
 	<nav>
 		<div class="nav-con wow bounceInLeft"  data-wow-delay="1s">
 			<ul>
-				<li><a href="#">网站首页</a></li>
-				<li><a href="#">技术文章</a></li>
-				<li><a href="#">我的日记</a></li>
-				<li><a href="#">关于我</a></li>
-				<li><a href="#">给我留言</a></li>
+				<li><a href="index.html">网站首页</a></li>
+				<li><a href="#" style="cursor: not-allowed;">技术文章</a></li>
+				<li><a href="#" style="cursor: not-allowed;">我的日记</a></li>
+				<li><a href="#" style="cursor: not-allowed;">关于我</a></li>
+				<li><a href="#" style="cursor: not-allowed;">给我留言</a></li>
 			</ul>		
 		</div>
 		<div class="nav-search  wow bounceInRight"  data-wow-delay="1s">
@@ -79,73 +85,52 @@
 	<!--
     	首页主体开始
     -->
-	<main>
+	<main id="app" v-cloak>
+	
 		<div class="main-topline wow bounceInDown" data-wow-delay="1.6s"></div>
 		
 		<div class="main-content wow lightSpeedIn"  data-wow-delay="2.4s"  data-wow-duration="2s">
 			<ul>
-				<li class="main-content-article" data-scroll-reveal="enter left over 1s and move 100px wait 1.5s">
+				<li v-for="(item,index) in newContent" v-if="index<pageNum" class="main-content-article" data-scroll-reveal="enter left over 1s and move 100px wait 1.5s">
 					
-					<h3 class="main-content-article1">【心路历程】请不要在设计这条路上徘徊啦</h3>
+					<h3 class="main-content-article1">{{item.title1}}</h3>
 					
-					<img class="main-content-article2" src="images/indimgs/img_1.jpg" alt="1.jpg" />
-					
-					<span  class="main-content-article3" >
-						我整理了一下网友给我的来信，如果你还在踌躇不前，不妨来看看，到底要不要坚持下去！我也欢迎大家给我来信，希望能帮到更多人。
-					</span>
-				
-					<span class="main-content-article4">2017-12-20</span>
-					
-					<span class="main-content-article5">阅读全文>></span>
-				</li>
-				
-				<li class="main-content-article" data-scroll-reveal="enter left over 1s and move 300px">
-					
-					<h3 class="main-content-article1">【心路历程】请不要在设计这条路上徘徊啦</h3>
-					
-					<img class="main-content-article2" src="images/indimgs/img_1.jpg" alt="1.jpg" />
+					<img class="main-content-article2" :src="item.img2" />
 					
 					<span  class="main-content-article3" >
-						我整理了一下网友给我的来信，如果你还在踌躇不前，不妨来看看，到底要不要坚持下去！我也欢迎大家给我来信，希望能帮到更多人。
+						{{item.detail3}}
 					</span>
 				
-					<span class="main-content-article4">2017-12-20</span>
+					<span class="main-content-article4">{{item.time4}}</span>
 					
-					<span class="main-content-article5">阅读全文>></span>
+					<a class="main-content-article5" :href="item.href5" :title="item.artTitle6" target="_blank">阅读全文>></a>
 				</li>
-				
-				<li class="main-content-article" data-scroll-reveal="enter left over 1s and move 300px">
-					
-					<h3 class="main-content-article1">【心路历程】请不要在设计这条路上徘徊啦</h3>
-					
-					<img class="main-content-article2" src="images/indimgs/img_1.jpg" alt="1.jpg" />
-					
-					<span  class="main-content-article3" >
-						我整理了一下网友给我的来信，如果你还在踌躇不前，不妨来看看，到底要不要坚持下去！我也欢迎大家给我来信，希望能帮到更多人。
-					</span>
-				
-					<span class="main-content-article4">2017-12-20</span>
-					
-					<span class="main-content-article5">阅读全文>></span>
-				</li>
-				
-				<li class="main-content-article" data-scroll-reveal="enter left over 1s and move 300px">
-					
-					<h3 class="main-content-article1">【心路历程】请不要在设计这条路上徘徊啦</h3>
-					
-					<img class="main-content-article2" src="images/indimgs/img_1.jpg" alt="1.jpg" />
-					
-					<span  class="main-content-article3" >
-						我整理了一下网友给我的来信，如果你还在踌躇不前，不妨来看看，到底要不要坚持下去！我也欢迎大家给我来信，希望能帮到更多人。
-					</span>
-				
-					<span class="main-content-article4">2017-12-20</span>
-					
-					<span class="main-content-article5">阅读全文>></span>
-				</li>
-				
 				
 			</ul>
+			
+			<div class="app">
+			    <div>
+			      <div class="page"  v-show="show">
+			        <div class="pagelist">
+			          <span class="jump" :class="{disabled:pstart}" @click="{current_page--};jumpPage(current_page--)">上一页</span>
+			          <span v-show="current_page>5" class="jump" @click="jumpPage(1)">1</span>
+			          
+			          <span class="ellipsis"  v-show="efont">...</span>
+			          <span class="jump" v-for="num in indexs" :class="{bgprimary:current_page==num}" @click="jumpPage(num)">{{num}}</span>
+			          <span class="ellipsis"  v-show="ebehind">...</span>
+			
+			          <span :class="{disabled:pend}" class="jump" @click="{current_page++};jumpPage(current_page)">下一页</span>
+			          
+			          <span  class="jump" @load="jumpPage(pages)">共{{pages}}页</span>
+			
+			          <span class="jumppoint">跳转到：</span>
+			          <span class="jumpinp"><input type="text" v-model="changePage"></span>
+			          <span class="jump gobtn" @click="jumpPage(changePage)">GO</span>
+			        </div>
+			      </div>
+			    </div>
+			</div>
+	
 		</div>
 		
 		<div class="main-bottomline wow swing"></div>

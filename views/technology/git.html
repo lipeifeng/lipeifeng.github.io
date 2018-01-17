@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+	<link rel="stylesheet" href="../../ccs/article_technology.css" />
+	<title>Git入门</title>
+</head>
+
+	<!--面包屑导航开始-->
+	<div id="navs">
+		<p>
+			<span>你当前的位置：</span>
+			<a href="#">首页</a> / 
+			<a href="#">技术文章</a> / 
+			<a href="#">Git入门</a>
+		</p>
+	</div>
+	<!--面包屑导航结束-->
+	
+	<!--文章区域开始-->
+	<div id="article">
+		
+		<!--文章标题-->
+		<div class="article-title">
+			<h3>Git入门</h3>
+		</div>
+		
+		<!--文章内容-->
+		<div class="article-con">
+		
+			<!--文章内容部分-->
+			<div class="article-con">
+		
+				<!--文章内容部分内容-->
+				<div class="article-con-content">
+					<ol style="list-style:none">
+						<li>
+							<h4 style="display:inline-block">一．准备工具</h4>
+							<ul>
+								<li>
+									1.github官网上注册账号<a href="https://github.com/" target="_blank">https://github.com/</a>  <br />
+									注释：GitHub是英文网站，(对于英语不太好的学员建议可用chrome浏览器右键翻译工具翻译看,但推荐看英文的)
+								</li>
+								<li>
+									2. <a href="../../resources/git免安装包.rar" download>安装github客户端(git免安装包)[点击可下载] </a><br />
+									&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+									<img src="../../images/gitimgs/1.png" alt=""> <br />
+									*注册和安装完后，github和git都登陆同一账号。
+								</li>
+							</ul>
+						</li>
+						
+						<li>
+							<h4 style="display:inline-block">二.概念理解</h4>
+							<ul>
+								<li>
+									1.git 和 github之间是什么关系 ？ <br />
+									Git - 版本控制工具  <br />
+									Github - 一个网站，提供给用户空间创建git仓储 <br />
+								</li>
+								<li>
+									2.Git工作区,暂存区和版本区 以及 远程仓库，基本概念： <br />
+									<span style="color:red">①工作区:</span> <br />你工作的地方,你在哪里工作呢?肯定是你的电脑上,那么工作区就是你在电脑里能看到的目录.  <br />
+									<span style="color:red">②暂存区: </span><br />英文名叫stage或者index.听名字就知道是暂时的,不是永久的,数据会经常的发生变化,这个区域一般存放在’git目录’下的index文件(.git/index)中,我们把暂存区有时候也叫做索引(index). <br />
+									<span style="color:red">③版本库: </span><br />工作区中有一个隐藏目录.git,这个不算工作区,而是Git的版本库.  <br />
+									【（组织--》文件夹和搜索选项--》查看--》显示隐藏文件）】  <br />
+									<span style="color:red">④远程仓库：  </span><br />
+									Github - 一个网站，充当服务器仓库，提供给用户空间创建git仓储。  <br />
+									<img src="../../images/gitimgs/2.png" alt="" /> <br />
+								</li>
+							</ul>
+						</li>
+						
+						<li>
+							<h4 style="display:inline-block">三．命令行操作</h4>
+							<ul>
+								<li>
+									1.之前已打开登陆git客户端：打开shell小黑窗 <br />
+									①点击设置图标选中Options登陆账号 <br />
+									<img src="../../images/gitimgs/3.png" alt="" />
+									<img src="../../images/gitimgs/4.png" alt="" /> <br />
+									②右键点击Tutorial，点击Open in Git Shell选项，显示shell小黑窗
+									<img src="../../images/gitimgs/5.png" alt="" /> 
+									<img src="../../images/gitimgs/6.png" alt="" /> <br />
+									
+								</li>
+								<li>
+									2.在github网站上创建项目存储仓库：
+									<img src="../../images/gitimgs/7.png" alt="" /> <br />
+									
+								</li>
+								<li>
+									3.$cd C:\Users\xdl\Desktop  <br />
+									以此等下拿github网站项目仓库时项目在桌面上 <br />
+								</li>
+								<li>
+									4.复制github网站项目仓库地址,然后git clone xxx复制其仓库 <br />
+									<img src="../../images/gitimgs/8.png" alt="" /> <br />
+									$ git clone https://github.com/JackieLee440582/project.git <br />
+									<img src="../../images/gitimgs/9.png" alt="" /> <br />
+									$cd project
+								</li>
+								<li>
+									5.查看git用户的账户名和邮箱： <br />
+									$ git config --global user.name <br />
+									$ git config --global user.email <br /> 
+									<br />
+									如果查看不是当前账户和邮箱，可以进行设置： <br />
+									  $ git config --global user.name “JackieLee440582”  <br />
+									  $ git config --global user.email “1422050441@qq.com” <br />
+								</li>
+								<li>
+									6.查看状态  <br />
+									 $ git status  <br />
+									 $ dir  查看文件夹内容  <br />
+								</li>
+								<li>
+									7.提交文件： <br />
+									<span style="color:red">（1）从工作区提交到缓存区： </span> <br />
+									 ①$ git add xxx   (xxx具体某个文件)  <br />
+									 ②$ git add .  (提交工作区所有文件)  <br />
+									 <span style="color:red">（2）从缓存区提交到版本区： </span> <br />
+									 ①$ git commit  (将弹出一个说明文档，写一下内容保存即可)  <br />
+									 ②$ git commit -m “wohahah” (不再弹出说明文档，直接提交)  <br />
+									 <span style="color:red">（3）从工作区一键直接提交到版本区：</span> <br />
+									 $ git commit -a -m “luckie” <br />
+									 <span style="color:red">（4）从版本区提交到远程仓库（服务器仓库）：</span> <br />
+									要关联一个远程库，使用命令: <br />
+									$git remote add origin https://github.com/JackieLee440582/project.git <br />
+									关联后，使用命令: <br />
+									$ git push -u origin master第一次推送master分支的所有内容。 <br />
+									***由于远程库是空的，我们第一次推送master分支时，加上了-u参数，Git不但会把本地的master分支内容推送的远程新的master分支，还会把本地的master分支和远程的master分支关联起来，在以后的推送或者拉取时就可以简化命令。*** <br />
+									<br />
+									 $ git remote 查看当前远程库 <br />
+									 $ git remote -v 查看当前远程库的地址（即clone项目的地址） <br />
+									 <br />
+									注： <br />
+									如果git push 报错，即是协议有问题，把HTTPS协议改成ssh协议： <br />
+									$ git remote rm origin  <br />
+									$ git remote add origin git@github.com:JackieLee440582/project.git <br />
+									$ git push origin master <br />
+								</li>
+								<li>
+									8.工作区、缓存区、版本区中文件两两状态对比： <br />
+									<span style="color:red">（1）工作区和缓冲区状态对比：</span> <br />
+									 $ git diff <br />
+									<span style="color:red">（2）缓存区和版本区状态对比：</span>  <br />
+									 $ git diff --cached <br />
+									<span style="color:red">（3）工作区和版本区状态对比：</span> <br />
+									 $ git diff master <br />
+								</li>
+								<li>
+									9.文件或内容删除及回复操作： <br />
+									<br />
+									（1）文件已提交到版本区，删除命令行：  <br />
+									  $ git rm -f xxx   (xxx为要删除的文件)  <br />
+									  <br />
+									（2）文件误删或内容要找回，先：  <br />
+									  $ git log   ||  $ git reflog  （Q键退出历史状态）  <br />
+									列出最近操作记录，复制最新一条记录的状态码（前几位就行）；  <br />
+									 $ git checkout A B  ||  $ git reset --hard A  <br />
+									回复到上一次操作，A为状态码，B为要找回的文件名  <br />
+								</li>
+								<li>
+									10.多人协作：分配权限 <br />
+									（1）打开你所要协作的项目，点击Settings，找到点击Collaborators  <br />
+									，输入你的组员账号，点击Add collaborators添加。  <br />
+									<img src="../../images/gitimgs/10.png" alt="" /> <br />
+									<img src="../../images/gitimgs/11.png" alt="" /> <br />
+									（2）组员在邮箱找到邀请函，点击View invitation接受邀请 <br />
+									<img src="../../images/gitimgs/12.png" alt="" /> <br />
+									<img src="../../images/gitimgs/13.png" alt="" /> <br />
+									（3）点击邀请后弹出github浏览页，登陆自己的github账号，将显示邀请详情，点击Accept inivitation接受邀请，那么可以协作项目了。 <br />
+									<img src="../../images/gitimgs/14.png" alt="" /> <br />
+									<img src="../../images/gitimgs/15.png" alt="" /> <br />
+									协助者一样命令行操作，首先cd 到desktop，然后git clone ...。
+								</li>
+								<li>
+									11.多人协作冲突问题：多人同时修改同一文件某一内容
+								</li>
+							</ul>
+						</li>
+						
+					</ol>
+				</div>
+			
+				</div>
+			</div>
+			
+			
+			
+		</div>
+		
+		<div class="article-Theend">
+			
+			<p class="article-end">
+				<span>------->>本·文·完</span>
+			</p>
+				
+		</div>
+		
+	</div>
+	<!--文章区域结束-->
+	
+</body>
+</html>

@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+	<link rel="stylesheet" href="../../ccs/article_technology.css" />
+	<title>css权重</title>
+</head>
+
+	<!--面包屑导航开始-->
+	<div id="navs">
+		<p>
+			<span>你当前的位置：</span>
+			<a href="#">首页</a> / 
+			<a href="#">技术文章</a> / 
+			<a href="#">百度地图API接口的使用方法</a>
+		</p>
+	</div>
+	<!--面包屑导航结束-->
+	
+	<!--文章区域开始-->
+	<div id="article">
+		
+		<!--文章标题-->
+		<div class="article-title">
+			<h3 style="width:300px;">百度地图API接口的使用方法</h3>
+		</div>
+		
+		<!--文章内容-->
+		<div class="article-con">
+			
+		
+			<!--文章内容部分-->
+			<div class="article-con">
+		
+				<!--文章内容部分内容-->
+				<div class="article-con-content">
+					<ol style="list-style:none">
+						<li style="text-align:center;margin-top:-10px;"><a href="mapApi_examples.html" id="demoApi" style="font-size:14px;">----个人demo展示---</a></li>
+						<li>
+							<h4 style="display:inline-block">一．绘制地图前准备工作：申请密钥</h4>
+							<ul>
+								<li>
+									1.先搜索“百度地图API”，点击跳转“百度地图开放平台”<br /><br />
+									<img src="../../images/mapimgs/1.png" alt="" />
+								</li>
+								<li>
+									2.先登录百度账号，再点击进入控制台 <br />
+									<img src="../../images/mapimgs/2.png" width="800px" alt="" />
+								</li>
+								<li>
+									3.创建应用： <br />
+									（1）应用名称自定义，如“map1” <br />
+									（2）应用类型选择“浏览器端” <br />
+									（3）Referer白名单填写“*” <br />
+									最后提交。 <br />
+									<img src="../../images/mapimgs/3.png" alt="" />
+									<img src="../../images/mapimgs/4.png" width="800px" alt="" />
+									<span style="color:red">“访问应用（AK）”那一栏就是所需的密钥</span>
+								</li>
+							</ul>
+						</li>
+						
+						<li>
+							<h4 style="display:inline-block">二．开始绘制地图</h4>
+							<ul>
+								<li>
+									1.到顶部导航栏，鼠标移到“开发文档”，找到点击“JavaScript API”跳转页面<br />
+									<img src="../../images/mapimgs/5.png" width="800px" alt="" />
+								</li>
+								<li>
+									2.找到“示例DEMO>>”，点击它跳转页面<br />
+									<img src="../../images/mapimgs/6.png" alt="" />
+									<img src="../../images/mapimgs/7.png" alt="" />
+								</li>
+								<li>
+									3.可复制各个demo中代码练习，记得把密钥写上<br />
+									<img src="../../images/mapimgs/8.png" alt="" /> <br />
+									注：在1.5版本之后，必须线申请密钥才能使用，所以在我们获取到script的链接后，把后面的密钥填上；<br />
+									如果不想申请密钥，可以把版本改成1.5以下版本，例如v=1.4；这样密钥可不管不写。
+								</li>
+								<li>
+									4.坐标获取技巧：<br />
+									坐标获取：  <a href="http://api.map.baidu.com/lbsapi/getpoint/index.html" target="_blank">http://api.map.baidu.com/lbsapi/getpoint/index.html</a>
+									<br />
+									输入地点从而快速获取对应坐标，从而应用于各种方法中。
+									<img src="../../images/mapimgs/9.png" width="800px" alt="" /> 
+								</li>
+							</ul>
+						</li>
+						
+					</ol>					
+				</div>
+		
+			</div>
+			
+			
+			
+		</div>
+		
+		<div class="article-Theend">
+			
+			<p class="article-end">
+				<span>------->>本·文·完</span>
+			</p>
+				
+		</div>
+		
+	</div>
+	<!--文章区域结束-->
+	
+</body>
+<script>
+//iframe自适应高度
+function reinitIframe(){
+var iframe = document.getElementById("frame_content");
+try{
+var bHeight = iframe.contentWindow.document.body.scrollHeight;
+var dHeight = iframe.contentWindow.document.documentElement.scrollHeight;
+var height = Math.max(bHeight, dHeight);
+iframe.height = height;
+}catch (ex){}
+}
+window.setInterval("reinitIframe()", 200);	
+
+</script>
+</html>

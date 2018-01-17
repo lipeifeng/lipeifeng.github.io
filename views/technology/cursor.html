@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+	<link rel="stylesheet" href="../../ccs/article_technology.css" />
+	<title>cursor光标类型</title>
+	<style>
+		.test{border-collapse:collapse;margin:0 auto;font-size:18px;}
+		
+		.test td{padding:10px;border:1px solid black;}
+		
+		.test td:hover{background:#C0C0C0;}
+		
+		.auto{cursor:auto;}
+		.default{cursor:default;}
+		.none{cursor:none;}
+		.context-menu{cursor:context-menu;}
+		.help{cursor:help;}
+		.pointer{cursor:pointer;}
+		.progress{cursor:progress;}
+		.wait{cursor:wait;}
+		.cell{cursor:cell;}
+		.crosshair{cursor:crosshair;}
+		.text{cursor:text;}
+		.vertical-text{cursor:vertical-text;}
+		.alias{cursor:alias;}
+		.copy{cursor:copy;}
+		.move{cursor:move;}
+		.no-drop{cursor:no-drop;}
+		.not-allowed{cursor:not-allowed;}
+		.e-resize{cursor:e-resize;}
+		.n-resize{cursor:n-resize;}
+		.ne-resize{cursor:ne-resize;}
+		.nw-resize{cursor:nw-resize;}
+		.s-resize{cursor:s-resize;}
+		.se-resize{cursor:se-resize;}
+		.sw-resize{cursor:sw-resize;}
+		.w-resize{cursor:w-resize;}
+		.ew-resize{cursor:ew-resize;}
+		.ns-resize{cursor:ns-resize;}
+		.nesw-resize{cursor:nesw-resize;}
+		.nwse-resize{cursor:nwse-resize;}
+		.col-resize{cursor:col-resize;}
+		.row-resize{cursor:row-resize;}
+		.all-scroll{cursor:all-scroll;}
+		.zoom-in{cursor:zoom-in;}
+		.zoom-out{cursor:zoom-out;}
+		.url {cursor: url(../../images/viewimgs/skin/qq.png), pointer;}
+		body {cursor: url(../../images/viewimgs/skin/favicon.ico), auto;}
+	</style>
+</head>
+
+	<!--面包屑导航开始-->
+	<div id="navs">
+		<p>
+			<span>你当前的位置：</span>
+			<a href="#">首页</a> / 
+			<a href="#">技术文章</a> / 
+			<a href="#">cursor光标类型</a>
+		</p>
+	</div>
+	<!--面包屑导航结束-->
+	
+	<!--文章区域开始-->
+	<div id="article">
+		
+		<!--文章标题-->
+		<div class="article-title">
+			<h3>cursor光标类型</h3>
+		</div>
+		
+		<!--文章内容-->
+		<div class="article-con">
+		
+			<!--文章内容部分-->
+			<div class="article-con">
+		
+				<!--文章内容部分内容-->
+				<div class="article-con-content">
+					<table class="test">
+						<tbody>
+							<tr>
+								<td class="auto">auto</td>
+								<td class="default">default</td>
+								<td class="none">none</td>
+								<td class="context-menu">context-menu</td>
+								<td class="help">help</td>
+								<td class="pointer">pointer</td>
+								<td class="progress">progress</td>
+							</tr>
+							<tr>
+								<td class="wait">wait</td>
+								<td class="cell">cell</td>
+								<td class="crosshair">crosshair</td>
+								<td class="text">text</td>
+								<td class="vertical-text">vertical-text</td>
+								<td class="alias">alias</td>
+								<td class="copy">copy</td>
+							</tr>
+							<tr>
+								<td class="move">move</td>
+								<td class="no-drop">no-drop</td>
+								<td class="not-allowed">not-allowed</td>
+								<td class="e-resize">e-resize</td>
+								<td class="n-resize">n-resize</td>
+								<td class="ne-resize">ne-resize</td>
+								<td class="nw-resize">nw-resize</td>
+							</tr>
+							<tr>
+								<td class="s-resize">s-resize</td>
+								<td class="se-resize">se-resize</td>
+								<td class="sw-resize">sw-resize</td>
+								<td class="w-resize">w-resize</td>
+								<td class="ew-resize">ew-resize</td>
+								<td class="ns-resize">ns-resize</td>
+								<td class="nesw-resize">nesw-resize</td>
+							</tr>
+							<tr>
+								<td class="nwse-resize">nwse-resize</td>
+								<td class="col-resize">col-resize</td>
+								<td class="row-resize">row-resize</td>
+								<td class="all-scroll">all-scroll</td>
+								<td class="url">url</td>
+								<td class="zoom-in">zoom-in</td>
+								<td class="zoom-out">zoom-out</td>
+							</tr>
+						</tbody>
+					</table>
+					<div>
+						<p>自定义光标样式的CSS代码 : <br />
+						CSS里的cursor属性能接受很多种光标样式属性，而且，如果使用url()表达式，便能用自己的图片自定义光标图案样式：
+						</p>
+						<xmp>body {cursor: url(../../images/viewimgs/skin/favicon.ico), auto;}
+.url {cursor: url(../../images/viewimgs/skin/qq.png), pointer;}</xmp>
+						<p>
+							程序员编程要有个好习惯，要给程序留下备份方案，当第一方案不起作用时，备份方案能挽回错误，<br />
+							所以，这里使用了pointer值做备份，这个跟设置字体的font-family的思路是一样的。<br />
+							还有一点要注意的是，如果使用谷歌浏览器，光标图案的大小会跟图片原生大小一样，<br />
+							但在火狐浏览器里，自定义光标图案总是缩小到标准大小。
+						</p>
+					</div>
+				</div>
+			</div>
+			
+			
+			
+		</div>
+		
+		<div class="article-Theend">
+			
+			<p class="article-end">
+				<span>------->>本·文·完</span>
+			</p>
+			
+		</div>
+		
+	</div>
+	<!--文章区域结束-->
+	
+</body>
+</html>

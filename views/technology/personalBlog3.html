@@ -1,0 +1,82 @@
+	<!DOCTYPE html>
+	<html lang="zh">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+		<link rel="stylesheet" href="../../ccs/article_technology.css" />
+		<title>搭建个人博客--怎样将域名绑定到github pages 博客上(3)</title>
+	</head>
+	
+		<!--面包屑导航开始-->
+		<div id="navs">
+			<p>
+				<span>你当前的位置：</span>
+				<a href="#">首页</a> / 
+				<a href="#">技术文章</a> / 
+				<a href="#">搭建个人博客--怎样将域名绑定到github pages 博客上(3)</a>
+			</p>
+		</div>
+		<!--面包屑导航结束-->
+		
+		<!--文章区域开始-->
+		<div id="article">
+			
+			<!--文章标题-->
+			<div class="article-title">
+				<h3 style="width:320px">将域名绑定到github pages 博客上</h3>
+			</div>
+			
+			<!--文章内容-->
+			<div class="article-con">
+			
+				<!--文章内容部分-->
+				<div class="article-con">
+			
+					<!--文章内容部分内容-->
+					<div class="article-con-content">
+							<ol style="list-style:none">
+								<li>
+									1.添加CNAME文件 <br />
+									在仓库根目录下添加一个CNAM文件，没有后缀名，里面内容为你的域名(如:test.com),不需要添加http/www等前缀。 <br />									
+								</li>
+								<li>
+									2.在小黑窗 $ping username.github.io记录下IP地址 <br />
+									<img src="../../images/blogimgs/blog3/1.png" alt="" />									
+								</li>
+								<li>
+									3.添加 DNS Service记录去阿里云注册个账号，买个域名，设置两个A记录。分别是@和www，ip地址填上个步骤获取的IP地址。<br />
+									<img src="../../images/blogimgs/blog3/2.png" alt="" />									
+								</li>
+								<li>
+									4.设置域名的DNS（可忽略）<br />
+									在相应域名的Csutom DNS里，设置DNS service,添加两条记录f1g1ns1.dnspod.net和f1g1ns2.dnspod.net<br />
+									<img src="../../images/blogimgs/blog3/3.png" alt="" />									
+								</li>
+								<li>
+									5.漫长的等待 <br />
+									要全球解析生效，得等上一会了，也可以先ping一下自己的设置对不对。<br />
+									<img src="../../images/blogimgs/blog3/4.png" alt="" />									
+								</li>
+							</ol>
+					</div>
+	
+				</div>
+				
+				
+				
+			</div>
+			
+			<div class="article-Theend">
+				
+				<p class="article-end">
+					<span>------->>本·文·完</span>
+				</p>
+					
+			</div>
+			
+		</div>
+		<!--文章区域结束-->
+		
+	</body>
+	</html>

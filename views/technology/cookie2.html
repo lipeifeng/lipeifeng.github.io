@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+	<link rel="stylesheet" href="../../ccs/article_technology.css" />
+	<title>JS操作cookie</title>
+</head>
+
+	<!--面包屑导航开始-->
+	<div id="navs">
+		<p>
+			<span>你当前的位置：</span>
+			<a href="#">首页</a> / 
+			<a href="#">技术文章</a> / 
+			<a href="#">JS操作cookie</a>
+		</p>
+	</div>
+	<!--面包屑导航结束-->
+	
+	<!--文章区域开始-->
+	<div id="article">
+		
+		<!--文章标题-->
+		<div class="article-title">
+			<h3>JS操作cookie</h3>
+		</div>
+		
+		<!--文章内容-->
+		<div class="article-con">
+		
+			<!--文章内容部分-->
+			<div class="article-con">
+		
+				<!--文章内容部分内容-->
+				<div class="article-con-content">
+					<ol style="list-style:none">
+						<li>
+							<h4 style="display:inline-block">一.简单的存取操作</h4>
+						
+							<ul>
+								<li>
+									在使用JavaScript存取 cookie 时，必须要使用Document对象的 cookie 属性；
+								</li>
+								<li>
+									<xmp style="display: inline-block;">一行代码介绍如何创建和修改一个 cookie --> document.cookie  = 'username=Darren'; </xmp>
+									<br />
+									<span>以上代码中'username'表示 cookie 名称，'Darren'表示这个名称对应的值。</span><br />
+									<span>假设 cookie 名称并不存在，那么就是创建一个新的 cookie；</span><br />
+									<span>如果存在就是修改了这个 cookie 名称对应的值。</span><br />
+									<span>如果要多次创建 cookie ，重复使用这个方法即可。</span>
+								</li>
+							</ul>
+							
+						</li>
+						<li>
+							<h4 style="display:inline-block">二.cookie的读取操作</h4>
+							<br />
+							<span>
+								JavaScript是运行在客户端的脚本，因此一般是不能够设置Session的，因为Session是运行在服务器端的。<br />
+								而cookie是运行在客户端的，所以可以用JS来设置cookie.
+							</span>
+							<br />
+							<span>
+								首先需要稍微了解一下cookie的结构，简单地说：<br />
+								cookie是以键值对的形式保存的，即key=value的格式。各个cookie之间一般是以“;”分隔。
+							</span>
+							<xmp>
+function getCookie(c_name){
+//先查询cookie是否为空，为空就return  ""
+	if (document.cookie.length>0){　　
+	　　c_start=document.cookie.indexOf(c_name + "=")　　
+//通过String对象的indexOf()来检查这个cookie是否存在，不存在就为 -1　　
+	　　if (c_start!=-1){ 
+		　　c_start=c_start + c_name.length+1;　　
+//最后这个+1其实就是表示"="号啦，这样就获取到了cookie值的开始位置
+		　　c_end=document.cookie.indexOf(";",c_start)　　
+//indexOf()第二个参数表示指定的开始索引的位置...这句是为了得到值的结束位置。
+//因为需要考虑是否是最后一项，所以通过";"号是否存在来判断
+		　　if (c_end==-1) {
+			 c_end=document.cookie.length;　
+			}else{
+			 return unescape(document.cookie.substring(c_start,c_end));
+			}　
+//通过substring()得到了值。
+//想了解unescape()得先知道escape()是做什么的,在文章结尾处也会进行讲解cookie编码细节
+	　　} 
+	}
+	return ""
+}
+							</xmp>
+						</li>
+						<li>
+							<h4 style="display:inline-block">三.设置cookie的有效期</h4>
+							<ul>
+								<li>
+									文章中常常出现的 cookie 的生命周期也就是有效期和失效期，即 cookie 的存在时间。在默认的情况下，cookie 会在浏览器关闭的时候自动清除，但是我们可以通过expires来设置 cookie 的有效期。
+								</li>
+								<li>
+									语法如下：<xmp style="display:inline-block">document.cookie = "name=value;expires=date" </xmp> 
+									<br />
+									上面代码中的date值为GMT(格林威治时间)格式的日期型字符串，生成方式如下：
+								</li>
+								<li>
+									<xmp style="display:inline-block">
+    var _date = new Date();
+　　_date.setDate(_date.getDate()+30);
+　　_date.toGMTString();
+									</xmp>
+									<br />
+									<span>
+										上面三行代码分解为几步来看：<br />
+										通过new生成一个Date的实例，得到当前的时间；<br />
+										getDate()方法得到当前本地月份中的某一天，接着加上30就是我希望这个cookie能过在本地保存30天；<br />
+										接着通过setDate()方法来设置时间；<br />
+										最后 用toGMTString()方法把Date对象转换为字符串，并返回结果.
+									</span>
+								</li>
+								<li>
+									通过下面这个完整的函数来说明在创建 cookie 的过程中我们需要注意的地方 。创建一个在 cookie 中存储信息的函数：
+									<xmp>
+function setCookie(c_name, value, expiredays){
+	var exdate=new Date();
+	exdate.setDate(exdate.getDate() + expiredays);
+	document.cookie=c_name+ "=" + escape(value) + 
+	((expiredays==null) ? "" : ";expires="+exdate.toGMTString());
+}									
+setCookie('username','Darren',30) <!--使用方法-->
+									</xmp>
+									<span>
+										现在我们这个函数是按照天数来设置cookie的有效时间，如果想以其他单位（如：小时）来设置，那么改变第三行代码即可：
+　　										<xmp>exdate.setHours(exdate.getHours() + expiredays);</xmp>
+										这样设置以后的cookie有效期就是按照小时为单位的。
+									</span>
+								</li>
+								<li>
+									常见问题中有提到清除cookie 的两种方法，现在要说的是使 cookie 失效，通过把有效期的时间设置为一个已过期的时间即可。
+								</li>
+							</ul>
+						</li>
+						<li>
+							<h4 style="display:inline-block">四.Cookie 高级篇之cookie 路径概念</h4>
+							<ul>
+								<li>cookie 一般都是由于用户访问页面而被创建的，可是并不是只有在创建 cookie 的页面才可以访问这个 cookie。</li>
+								<li>默认情况下，只有与创建 cookie 的页面在同一个目录或子目录下的网页才可以访问，<br />
+									这个是因为安全方面的考虑，造成不是所有页面都可以随意访问其他页面创建的 cookie。</li>
+								<li>举个栗子：在 "http://www.cnblogs.com/Darren_code/" 这个页面创建一个cookie，<br />
+									那么在"/Darren_code/"这个路径下的页面如：<br />
+									 "http://www.cnblogs.com/Darren_code/ archive/2011/11/07/Cookie.html"这个页面默认就能取到cookie信息。</li>
+								<li>可在默认情况下， "http://www.cnblogs.com"或者 "http://www.cnblogs.com/xxxx/" 就不可以访问这个 cookie</li>
+								<li>那么如何让这个 cookie 能被其他目录或者父级的目录访问类，通过设置 cookie 的路径就可以实现。
+									<br />
+									例子如下：
+　　									<xmp>document.cookie = "name=value;path=path"</xmp>
+　　									<xmp>document.cookie = "name=value;expires=date;path=path"</xmp>
+									path就是 cookie 的路径，最常用的例子就是让 cookie 在跟目录下,<br />
+									这样不管是哪个子页面创建的 cookie，所有的页面都可以访问到了:<br />
+									<xmp>document.cookie = "name=Darren;path=/"</xmp>
+									
+								</li>
+							</ul>
+						</li>
+						<li>
+							<h4 style="display:inline-block">五.Cookie 高级篇之cookie 域概念</h4>
+							<ul>
+								<li>路径能解决在同一个域下访问 cookie 的问题，咱们接着说 cookie 实现同域之间访问的问题。语法如下：
+									<xmp>document.cookie = "name=value;path=path;domain=domain"</xmp>
+									domain就是设置的 cookie 域的值。
+								</li>
+								<li>
+									例如"www.qq.com" 与 "sports.qq.com" 公用一个关联的域名"qq.com"，<br />
+									如果想让 "sports.qq.com" 下的cookie被"www.qq.com" 访问，<br />
+									就需要用到 cookie 的domain属性，并且需要把path属性设置为 "/"。例：
+									<xmp>document.cookie = "username=Darren;path=/;domain=qq.com"</xmp>
+									注：一定的是同域之间的访问，不能把domain的值设置成非主域的域名。
+								</li>
+							</ul>
+						</li>
+						<li>
+							<h4 style="display:inline-block">六.Cookie 高级篇之cookie 安全性</h4>
+							<ul>
+								<li>
+									通常 cookie 信息都是使用HTTP连接传递数据，这种传递方式很容易被查看，所以 cookie 存储的信息容易被窃取。
+									<br />
+									假如 cookie 中所传递的内容比较重要，那么就要求使用加密的数据传输。
+								</li>
+								<li>
+									所以 cookie 的这个属性的名称是“secure”，默认的值为空。
+									<br />
+									如果一个 cookie 的属性为secure，那么它与服务器之间就通过HTTPS或者其它安全协议传递数据。语法如下：
+									<xmp>document.cookie = "username=Darren;secure"</xmp>
+								</li>
+								<li>
+									把cookie设置为secure，只保证 cookie 与服务器之间的数据传输过程加密，
+									<br />
+									而保存在本地的 cookie文件并不加密。如果想让本地cookie也加密，得自己加密数据。
+								</li>
+								<li>
+									注：就算设置了secure 属性也并不代表他人不能看到你机器本地保存的 cookie 信息，所以说到底，别把重要信息放cookie就对了
+								</li>
+							</ul>
+						</li>
+						<li>
+							<h4 style="display:inline-block">七.Cookie 高级篇之cookie 编码细节</h4>
+							<ul>
+								<li>
+									通常 cookie 信息都是使用HTTP连接传递数据，这种传递方式很容易被查看，所以 cookie 存储的信息容易被窃取。
+									<br />
+									假如 cookie 中所传递的内容比较重要，那么就要求使用加密的数据传输。
+								</li>
+								<li>
+									在输入cookie信息时不能包含空格，分号，逗号等特殊符号，而在一般情况下，cookie 信息的存储都是采用未编码的方式。<br />
+									所以，在设置 cookie 信息以前要先使用escape()函数将 cookie 值信息进行编码，<br />
+									在获取到 cookie 值得时候再使用unescape()函数把值进行转换回来。<br />
+									如设置cookie时：
+									<xmp>document.cookie = name + "="+ escape (value)</xmp>
+									再看看基础用法时提到过的getCookie()内的一句：
+									<xmp>return unescape(document.cookie.substring(c_start,c_end))</xmp>
+									这样就不用担心因为在cookie值中出现了特殊符号而导致 cookie 信息出错了。
+								</li>
+							</ul>
+						</li>
+					</ol>
+
+				</div>
+			</div>
+			
+			
+			
+		</div>
+		
+		<div class="article-Theend">
+			
+			<p class="article-end">
+				<span>------->>本·文·完</span>
+			</p>
+			
+		</div>
+		
+	</div>
+	<!--文章区域结束-->
+	
+</body>
+</html>

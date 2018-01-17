@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+	<link rel="stylesheet" href="../../ccs/article_technology.css" />
+	<title>JQ操作cookie</title>
+</head>
+
+	<!--面包屑导航开始-->
+	<div id="navs">
+		<p>
+			<span>你当前的位置：</span>
+			<a href="#">首页</a> / 
+			<a href="#">技术文章</a> / 
+			<a href="#">JQ操作cookie</a>
+		</p>
+	</div>
+	<!--面包屑导航结束-->
+	
+	<!--文章区域开始-->
+	<div id="article">
+		
+		<!--文章标题-->
+		<div class="article-title">
+			<h3>JQ操作cookie</h3>
+		</div>
+		
+		<!--文章内容-->
+		<div class="article-con">
+		
+			<!--文章内容部分-->
+			<div class="article-con">
+		
+				<!--文章内容部分内容-->
+				<div class="article-con-content">
+					<ol style="list-style:none">
+						<li>
+							<h4 style="display:inline-block">1.jquery.cookie.js的配置</h4>
+						
+							<ul>
+								<li>
+									首先引入jQuery库文件，在后面引入包含jquery.cookie.js的库文件
+								</li>
+								<li>
+									<span><a href="../../js/jquery.cookie.js" target="_blank">jquery.cookie.js插件地址</a></span>
+									<xmp><script type="text/javascript" src="jquery.js"></script></xmp> 
+									<xmp><script type="text/javascript" src="jquery.cookie.js"></script></xmp>
+								</li>
+							</ul>
+						</li>
+						
+						<li>
+							<h4 style="display:inline-block">2.使用方法</h4>
+						
+<xmp style="font-size:25px">
+### Get a cookie
+```
+$.cookie("get", {
+	name: 'login'
+});
+```
+
+### Set a cookie (duration in days):
+```
+$.cookie("set", {
+	duration: 365,
+	name: 'login',
+	value: 'John'
+});
+```
+
+### Delete a cookie
+```
+$.cookie("delete", {
+	name: 'login'
+});
+```
+
+### Verify if a cookie exist, return `true` or `false`
+```
+$.cookie("exist", {
+	name: 'login'
+});
+```
+</xmp>
+
+
+						</li>
+					</ol>
+
+				</div>
+			</div>
+			
+			
+			
+		</div>
+		
+		<div class="article-Theend">
+			
+			<p class="article-end">
+				<span>------->>本·文·完</span>
+			</p>
+			
+		</div>
+		
+	</div>
+	<!--文章区域结束-->
+	
+</body>
+</html>

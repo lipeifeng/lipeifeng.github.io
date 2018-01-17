@@ -1,0 +1,140 @@
+	<!DOCTYPE html>
+	<html lang="zh">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+		<link rel="stylesheet" href="../../ccs/article_technology.css" />
+		<title>搭建个人博客--利用github仓库（1）</title>
+	</head>
+	
+		<!--面包屑导航开始-->
+		<div id="navs">
+			<p>
+				<span>你当前的位置：</span>
+				<a href="#">首页</a> / 
+				<a href="#">技术文章</a> / 
+				<a href="#">搭建个人博客--利用github仓库（1）</a>
+			</p>
+		</div>
+		<!--面包屑导航结束-->
+		
+		<!--文章区域开始-->
+		<div id="article">
+			
+			<!--文章标题-->
+			<div class="article-title">
+				<h3 style="width:300px">利用github搭建个人博客仓库</h3>
+			</div>
+			
+			<!--文章内容-->
+			<div class="article-con">
+			
+				<!--文章内容部分-->
+				<div class="article-con">
+			
+					<!--文章内容部分内容-->
+					<div class="article-con-content">
+							<ol style="list-style:none">
+								<li>
+									<h4 style="display:inline-block">一、概述</h4>
+									<ul>
+										<li>
+											可利用github pages搭建一个小站点，构建属于自己的个人博客 <br />
+											官网教程是： <a href="https://pages.github.com/" target="_blank">https://pages.github.com/</a>
+										</li>
+			
+									</ul>
+								</li>
+								<li>
+									<h4 style="display:inline-block">二、Github Pages的使用（git操作可参考“git入门”）</h4>
+									<ul>
+										<li>
+											1.登陆github官网登陆账号，然后点击“New repository”创建新的存储库 <br />
+											（Chrome浏览器可以右键点击中文翻译，方便阅读）<br />
+											<img src="../../images/blogimgs/blog1/1.png" alt="" />
+										</li>
+										<li>
+											2.点击“New repository”跳转到新页面，填写项目仓库信息：<br />
+											**存储库名称前缀一定要与账户名一致*** <br />
+											<img src="../../images/blogimgs/blog1/2.png" alt="" />
+										</li>
+										<li>
+											3.点击“创建存储库”，跳转到以下页面，点击“创建新文件” <br />
+											<img src="../../images/blogimgs/blog1/3.png" width="800px" alt="" />
+										</li>
+										<li>
+											4.填写新文件信息： <br />
+											文件名一定是英文大写“CNAME”，文件内容为你所注册的域名，最好加上www前缀：www.lipeifeng.top。 <br />
+											<img src="../../images/blogimgs/blog1/4.png"  width="800px" alt="" />
+										</li>
+										<li>
+											5.github上创建完博客存储库后，先把存储库clone下载到本地，然后就可以编写自己的博客页面代码，最后上传。 <br />
+											（1）先打开git客户端，登陆与github官网一致的账号 <br />
+											<img src="../../images/blogimgs/blog1/5.png" alt="" />
+											<img src="../../images/blogimgs/blog1/6.png" alt="" />
+											<img src="../../images/blogimgs/blog1/7.png" alt="" />
+											<br />
+											（2）右键点击“Tutorial”，选中“Open in Git Shell”弹出小黑窗即可输入命令行 <br />
+											<img src="../../images/blogimgs/blog1/8.png" alt="" /> <br />
+											（3）$cd C:\Users\xdl\Desktop <br />
+											以此等下拿github网站项目仓库时项目在桌面上 <br />
+											（4）先复制github网站项目仓库地址,然后$git clone xxx复制其仓库 <br />
+											<img src="../../images/blogimgs/blog1/9.png" alt="" />
+											<img src="../../images/blogimgs/blog1/10.png" alt="" /> <br />
+											（5）存储库拿到本地桌面了，就可以编写博客页面代码， <br />
+											新建index.html且必须和你clone下来的.git文件夹在同一个目录下 <br />
+											<img src="../../images/blogimgs/blog1/11.png" alt="" /> <br />
+											（6）博客页面代码写完后就要从本地到存储库三步骤提交： <br />
+												$git add . <br />
+												$git commit -m “blog” <br />
+												$git push <br />
+											<img src="../../images/blogimgs/blog1/12.png" alt="" /> <br />
+											刷新github网页即可看到提交的文件： <br />
+											<img src="../../images/blogimgs/blog1/13.png" alt=""  width="800px"/> <br />
+										</li>
+										<li>
+											6.以上步骤完成之后，即可通过域名访问你的博客, <br />
+											或者github项目存储库名称也可访问到你的网页，当然一回车url就变成你CNAME所绑定的域名 <br />
+											<img src="../../images/blogimgs/blog1/14.png" alt="" />
+											<img src="../../images/blogimgs/blog1/15.png" alt="" />
+										</li>
+										<li>
+											一般情况下，到这里就可以庆祝了，比如你想托管你的简单的网页设置。 <br />
+											但是，如果你和我一样，博客在其他平台下托管，你想通过购买的域名跳转到该平台，你的任务还没结束。<br />
+											只要一行js就好了，可以这么写index.html：
+<xmp>
+<!DOCTYPE html>
+<html>
+	<script>
+       window.location.href="http://www.cnblogs.com/xzsz/";
+	</script>
+	<body></body>
+</html>
+</xmp>
+											然后提交就搞定了，我就可以通过lipeifeng.top直接跳转到我的博客页面了。
+										</li>
+									</ul>
+								</li>
+							</ol>
+					</div>
+	
+				</div>
+				
+				
+				
+			</div>
+			
+			<div class="article-Theend">
+				
+				<p class="article-end">
+					<span>------->>本·文·完</span>
+				</p>
+					
+			</div>
+			
+		</div>
+		<!--文章区域结束-->
+		
+	</body>
+	</html>

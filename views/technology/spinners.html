@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+	<link rel="stylesheet" href="../../ccs/article_technology.css" />
+	
+	<!--<link rel="stylesheet" href="css/spinner/heartbeat.css">-->
+	<!--<link rel="stylesheet" href="css/spinners.css">-->
+	
+	<title>css进度条</title>
+</head>
+<body>
+	<!--面包屑导航开始-->
+	<div id="navs">
+		<p>
+			<span>你当前的位置：</span>
+			<a href="#">首页</a> / 
+			<a href="#">技术文章</a> / 
+			<a href="#">css进度条</a>
+		</p>
+	</div>
+	<!--面包屑导航结束-->
+	
+	<!--文章区域开始-->
+	<div id="article">
+		
+		<!--文章标题-->
+		<div class="article-title">
+			<h3>css进度条</h3>
+		</div>
+		
+		<!--文章内容-->
+		<div class="article-con">
+		
+			<!--文章内容部分-->
+			<div class="article-con">
+		
+				<!--文章内容部分内容-->
+				<div class="article-con-content">
+					<ol style="list-style:none">
+						<li>
+							<h4 style="display:inline-block">一.应用方式：</h4>
+							<ul>
+								<li>
+									首先引入库文件:
+									<br />
+									(1)如果想要访问整个spinners库，你可以链接根文件:
+									<xmp><link rel="stylesheet" href="css/spinners.css"></xmp>
+									(2)如果只需要使用一个特定的进度条，载入链接适当的文件：
+									<xmp><link rel="stylesheet" href="css/spinner/heartbeat.css"></xmp>
+								</li>
+								<li>
+									然后应用适当的[类名][class name](#类名称)(#class-names)来选择标记:
+									<br />
+<xmp><div class="heartbeat-loader">
+	  Loading...
+   </div>
+</xmp>
+								</li>
+							</ul>
+						</li>
+						<li>
+							<h4 style="display:inline-block">二.加载指示器类名的完整列表如下所示:</h4>
+							<ul>
+								<li>
+<pre>
+| Class                  | Description                                                    |
+| ---------------------- | -------------------------------------------------------------- |
+| .spinner-loader        | Spinning circles.                                              |
+| .throbber-loader       | Animated Facebook-like throbber.                               |
+| .refreshing-loader     | Circular spinning arrow. Great for refreshing content.         |
+| .heartbeat-loader      | Animated beating heart.                                        |
+| .gauge-loader          | Animated speedometer-like gauge with rotating needle.          |
+| .three-quarters-loader | Minimal three-quarters donut spinner.                          |
+| .wobblebar-loader      | Animated wobbling progress bar.                                |
+| .atebits-loader        | Staight out of Letterpress, an animated rotating Atebits logo. |
+| .whirly-loader         | A comet-like rotating spinner.                                 |
+| .flower-loader         | An animated spinning flower.                                   |
+| .dots-loader           | Almost a rotating shell game. With dots!                       |
+| .circles-loader        | Three rotating multi-colored circles.                          |
+| .plus-loader           | Animated Google Plus-like loader.                              |
+| .ball-loader           | A bouncing ball.                                               |
+| .hexdots-loader        | Similar to the dots animation, but with six!                   |
+| .inner-circles-loader  | A filling circle with other circles                            |
+| .pong-loader           | Retro tennis-like game simulation from the 70s.                |
+| .pulse-loader          | A pulsing circle. Shrinking and enlarging.										  |
+</pre>								
+								</li>
+								
+							</ul>
+					</ol>
+					<br />
+					<iframe id="frame_content" src="spinners_examples.html" frameborder="0" width="100%"  allowTransparency="true" scrolling="no"></iframe>
+					
+				</div>
+			</div>
+			
+			
+			
+		</div>
+		
+		<div class="article-Theend">
+			
+			<p class="article-end">
+				<span>------->>本·文·完</span>
+			</p>
+			
+		</div>
+		
+	</div>
+	<!--文章区域结束-->
+	
+</body>
+<script>
+//iframe自适应高度
+function reinitIframe(){
+var iframe = document.getElementById("frame_content");
+try{
+var bHeight = iframe.contentWindow.document.body.scrollHeight;
+var dHeight = iframe.contentWindow.document.documentElement.scrollHeight;
+var height = Math.max(bHeight, dHeight);
+iframe.height = height;
+}catch (ex){}
+}
+window.setInterval("reinitIframe()", 200);	
+
+</script>
+</html>

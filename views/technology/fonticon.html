@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+	<link rel="stylesheet" href="../../ccs/article_technology.css" />
+	<title>前端--字体&图标引进</title>
+</head>
+
+	<!--面包屑导航开始-->
+	<div id="navs">
+		<p>
+			<span>你当前的位置：</span>
+			<a href="#">首页</a> / 
+			<a href="#">技术文章</a> / 
+			<a href="#">前端--字体&图标引进</a>
+		</p>
+	</div>
+	<!--面包屑导航结束-->
+	
+	<!--文章区域开始-->
+	<div id="article">
+		
+		<!--文章标题-->
+		<div class="article-title">
+			<h3>前端--字体&图标引进</h3>
+		</div>
+		
+		<!--文章内容-->
+		<div class="article-con">
+			<!--文章内容第一部分-->
+			<div class="article-con">
+				<!--文章内容第一部分标题-->
+				<h4 class="article-con-title">一．字体引进---css 引进字体</h4>
+				<!--文章内容第一部分内容-->
+				<div class="article-con-code">
+<pre class="code">
+	@font-face {
+		font-family: "tuya";
+		src: url('./font/涂鸦.ttf');
+	}
+	*{
+		font-size:44px;
+		font-family: 'tuya';
+	}
+</pre>
+				</div>
+			</div>
+			
+			
+			<!--文章内容第二部分-->
+			<div class="article-con">
+				<!--文章内容第二部分标题-->
+				<h4 class="article-con-title">二.字体图标引进</h4>
+				<!--文章内容第二部分内容-->
+				<div class="article-con-content">
+					<p>
+						***系统自带的icon  https://unicode-table.com/cn/#geometric-shapes直接复制实体符即可显示图标。***
+					</p>
+					<ul>
+						<li>首先获取要使用字体的三种文件格式.EOT、.TTF或.OTF、.SVG，确保能在主流浏览器中都能正常显示该字体。</li>
+						<li>.EOT，适用于Internet Explorer 4.0+</li>
+						<li>.TTF或.OTF，适用于Firefox 3.5、Safari、Opera</li>
+						<li>.SVG，适用于Chrome、IPhone</li>
+					</ul>
+					<ol>
+						<li>
+							在阿里巴巴字体图标库中下载自己需要的字体图标，先注册登录，然后选中你需要的所有图标加入购物车，（http://www.iconfont.cn/search/index）；
+							<br />
+							注意：一次性下载自己需要的所有图标，如果分批次下载的话，需要重复上面的步骤。
+							<br />
+							<img src="../../images/viewimgs/fonticon/1.png" alt="" />
+							<br />
+							点击右上角购物车标志进入购物车下载
+							<br />
+							<img src="../../images/viewimgs/fonticon/2.png" alt="" />
+							<br />
+							当下载完后有一个压缩包，解压得到文件夹，可以重命名为icon
+							<br />
+							<img src="../../images/viewimgs/fonticon/3.png" alt="" />
+							<img src="../../images/viewimgs/fonticon/4.png" alt="" />
+							<img src="../../images/viewimgs/fonticon/5.png" alt="" />
+							<br />
+						</li>
+						<li>
+							在HTML文件中的使用方法：图标也是字体一类，把整个icon文件夹放到你项目中的font文件夹中
+							<br />
+							<img src="../../images/viewimgs/fonticon/6.png" alt="" />
+							<img src="../../images/viewimgs/fonticon/7.png" alt="" />
+							<br />
+						</li>
+						<li>
+							下面前两种方法在index.html页面中引入iconfont.css，在iconfont.css文件中的iconfont这个类中可以通过设置font-size来控制图标的大小，以及设置color来控制图标的颜色。
+							<br />
+							<p>
+								&lt;link rel="stylesheet" href="font/icon/iconfont.css" /&gt;
+								<br />
+								<p>注：查看类名或unicode编码，可以通过iconfont.css或三个demo_.html中获取。</p>
+								<ol>
+									<li>1 第一种使用方法：font-class引用
+										<p>
+											在标签中class引入类名iconfont，挑选相应图标并获取类名，并写到跟.iconfont 一起。
+											<br />
+											&lt;h1 class="iconfont icon-gongjuxiang"&gt;&lt;/h1&gt;
+											<br />
+											<img src="../../images/viewimgs/fonticon/8.png" alt="" />
+										</p>
+									</li>
+									
+									<li>2 第二种方法：unicode引用
+										<p>
+											在标签中class引入类名iconfont，挑选相应图标并获取字体编码，应用于标签内容
+											<br />
+											&lt;h1 class="iconfont"&gt;& # xe827;&lt;/h1&gt; (实体符之间是没有空格的)
+											<br />
+											<img src="../../images/viewimgs/fonticon/9.png" alt="" />
+										</p>
+									</li>
+									
+									<li>3 第三种方法：symbol引用：挑选相应图标并获取类名，应用于页面
+										<br />
+										这种用法其实是做了一个svg的集合，与另外两种相比具有如下特点：
+										<ul style="list-style-type: cambodian;">
+											<li>支持多色图标了，不再受单色限制。</li>
+											<li>通过一些技巧，支持像字体那样，通过font-size,color来调整样式。</li>
+										</ul>
+										<p>
+											在当前文件中的icon这个类中可以通过设置font-size来控制图标的大小，以及设置color来控制图标的颜色。
+										</p>
+										<xmp>
+.icon {
+	width: 5em;
+	height: 5em;
+	color:orangered;
+	vertical-align: -0.15em;
+	fill: currentColor;
+	overflow: hidden;
+}
+<script src="font/icon/iconfont.js"></script>
+<svg class="icon" aria-hidden="true">
+	<use xlink:href="#icon-hunningtujiaobanji"></use>
+</svg>
+										</xmp>
+										<img src="../../images/viewimgs/fonticon/10.png" alt="" />
+									</li>
+								</ol>
+							</p>
+						</li>
+					</ol>
+
+				</div>
+			</div>
+			
+			
+			
+		</div>
+		
+		<div class="article-Theend">
+			
+			<p class="article-end">
+				<span>------->>本·文·完</span>
+			</p>
+				
+		</div>
+	</div>
+	<!--文章区域结束-->
+	
+	
+</body>
+</html>
